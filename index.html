@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F1F8FD">
+<title>منيو مشروبات — رؤية</title>
+<style>
+@font-face{font-family:'Graphik';src:url('fonts/GraphikArabic-Light.woff2') format('woff2');font-weight:300;font-display:swap;}
+@font-face{font-family:'Graphik';src:url('fonts/GraphikArabic-Medium.woff2') format('woff2');font-weight:500;font-display:swap;}
+@font-face{font-family:'Graphik';src:url('fonts/GraphikArabic-Bold.woff2') format('woff2');font-weight:700;font-display:swap;}
+@font-face{font-family:'Graphik';src:url('fonts/GraphikArabic-Black.woff2') format('woff2');font-weight:900;font-display:swap;}
+:root{--navy:#0F194F;--blue:#1F5194;--mint:#48FFE5;--paper:#F1F8FD;}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Graphik',sans-serif;color:var(--navy);background:var(--paper);min-height:100vh;}
+.wrap{max-width:560px;margin:0 auto;padding:22px 20px 60px;}
+
+.o{fill:#fff;stroke:var(--blue);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.b{fill:var(--blue);stroke:var(--blue);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.m{fill:var(--mint);stroke:var(--blue);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.n{fill:none;stroke:var(--blue);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round;}
+.nmint{fill:none;stroke:var(--mint);stroke-width:4;stroke-linecap:round;}
+.eye{fill:#fff;stroke:var(--blue);stroke-width:2.6;}
+.pup{fill:var(--navy);}
+
+
+.top{position:relative;display:flex;flex-direction:column;align-items:flex-start;}
+.logo{height:36px;}
+.hero{position:absolute;left:-4px;top:-6px;width:104px;height:88px;}
+h1{margin-top:62px;font-weight:900;font-size:clamp(40px,12vw,56px);line-height:1.05;}
+h1 em{font-style:normal;color:var(--blue);}
+.welcome{margin:12px 0 0;font-weight:300;font-size:18px;color:var(--blue);display:flex;align-items:center;gap:10px;}
+.welcome::before{content:"";width:40px;height:7px;border-radius:7px;background:var(--mint);}
+.who{margin:26px 0 6px;}
+.who label{display:block;font-weight:500;font-size:14px;color:var(--blue);margin-bottom:6px;}
+.who input{width:100%;font:500 17px 'Graphik',sans-serif;color:var(--navy);padding:13px 16px;border:2px solid var(--navy);border-radius:14px;background:#fff;outline:none;}
+.who input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(72,255,229,.45);}
+.hint{margin-top:8px;font-weight:300;font-size:14px;color:var(--blue);}
+.sec{margin-top:30px;}
+.sec h2{display:flex;align-items:flex-end;gap:12px;font-weight:700;font-size:28px;line-height:1;color:var(--blue);padding-bottom:10px;border-bottom:2px solid var(--navy);}
+.sec h2 svg{width:60px;height:52px;flex:none;margin-bottom:-4px;}
+ul{list-style:none;margin-top:10px;display:grid;gap:8px;}
+.item{width:100%;display:flex;align-items:center;gap:12px;font:500 19px/1.3 'Graphik',sans-serif;color:var(--navy);background:#fff;border:1.5px solid rgba(31,81,148,.22);border-radius:14px;padding:0 14px 0 12px;min-height:56px;cursor:pointer;text-align:right;transition:transform .12s,background .12s,border-color .12s;}
+.item:hover{border-color:var(--blue);}
+.item:active{transform:scale(.98);background:#E2FFFB;border-color:var(--blue);}
+.nm{display:flex;align-items:center;gap:10px;flex:1;}
+.nm small{font-weight:300;font-size:13px;color:var(--blue);border:1px solid var(--blue);border-radius:99px;padding:1px 10px;}
+.go{flex:none;width:36px;height:36px;border-radius:50%;background:var(--navy);display:grid;place-items:center;}
+.go svg{width:20px;height:20px;fill:none;stroke:var(--mint);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.foot{margin-top:40px;}
+.foot i{display:block;width:60px;height:7px;border-radius:7px;background:var(--mint);margin-bottom:10px;}
+.foot b{font-weight:900;font-size:30px;color:var(--blue);}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);opacity:0;pointer-events:none;background:var(--navy);color:#fff;font-weight:500;font-size:16px;padding:14px 22px;border-radius:99px;transition:transform .25s,opacity .25s;z-index:9;white-space:nowrap;}
+.toast.show{transform:translate(-50%,0);opacity:1;}
+.toast b{color:var(--mint);font-weight:700;}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="eyes">
+      <ellipse class="eye" cx="-9" cy="0" rx="7.5" ry="12"/><ellipse class="pup" cx="-8" cy="1.5" rx="3.6" ry="7.5"/>
+      <ellipse class="eye" cx="9" cy="0" rx="7.5" ry="12"/><ellipse class="pup" cx="10" cy="1.5" rx="3.6" ry="7.5"/>
+      <path class="n" style="stroke-width:2.4" d="M-15 -17q6 -6 12 0M3 -17q6 -6 12 0"/>
+    </g>
+
+    <symbol id="s-coffee" viewBox="0 0 200 170">
+      <ellipse class="o" cx="100" cy="142" rx="94" ry="21"/>
+      <ellipse class="n" cx="100" cy="140" rx="70" ry="13"/>
+      <path class="n" d="M34 88C-2 84 0 128 46 120"/>
+      <path class="n" style="stroke-width:2.4" d="M34 98C14 98 14 116 40 112"/>
+      <path class="o" d="M32 80C32 120 62 140 100 140S168 120 168 80z"/>
+      <path class="m" d="M36 96C46 124 72 134 100 134S154 124 164 96C150 108 126 112 100 112S50 108 36 96z"/>
+      <ellipse class="o" cx="100" cy="80" rx="68" ry="19"/>
+      <ellipse class="b" cx="100" cy="81" rx="55" ry="13"/>
+      <ellipse cx="108" cy="82" rx="13" ry="3.2" fill="#fff"/>
+      <path class="n" d="M64 152L170 143"/>
+      <ellipse class="o" cx="62" cy="152" rx="14" ry="5.5" transform="rotate(-5 62 152)"/>
+      <use href="#eyes" transform="translate(100 56) scale(1.25)"/>
+    </symbol>
+
+    <symbol id="s-togo" viewBox="0 -14 150 219">
+      <path class="o" d="M26 64h98l-12 126q-1 8-9 8H47q-8 0-9-8z"/>
+      <path class="b" d="M29.5 98h91l-5 52H34.5z"/>
+      <path class="n" style="stroke:#fff;stroke-width:3" d="M32 106h86"/>
+      <path class="nmint" d="M33 142h84"/>
+      <path class="o" d="M14 50h122l-4 14H18z"/>
+      <path class="o" d="M26 50C26 30 124 30 124 50z"/>
+      <use href="#eyes" transform="translate(76 26) rotate(-6) scale(1.5)"/>
+      <g transform="translate(128 182) rotate(-18)">
+        <ellipse class="m" cx="0" cy="0" rx="14" ry="20"/><path class="n" d="M-2 -18C6 -6 -6 6 2 18"/>
+      </g>
+    </symbol>
+
+    <symbol id="s-tea" viewBox="0 0 120 130">
+      <path class="n" d="M76 28l16 -20"/><rect class="m" x="86" y="2" width="14" height="14" rx="2" transform="rotate(25 93 9)"/>
+      <path class="o" d="M30 28h60l-7 76q-1 8 -9 8H46q-8 0 -9 -8z"/>
+      <path class="m" d="M34.5 52h51l-5 52q-1 8 -9 8H48q-8 0 -9 -8z" />
+      <path class="n" d="M30 28h60"/>
+      <use href="#eyes" transform="translate(60 80) scale(.95)"/>
+      <path class="n" d="M14 119h92"/>
+    </symbol>
+
+    <symbol id="s-leaf" viewBox="0 0 120 130">
+      <path class="n" d="M60 124V96"/>
+      <path class="m" d="M60 112C16 104 14 56 34 22 72 28 106 50 102 84 100 100 82 112 60 112z"/><path class="n" d="M34 22C50 50 58 80 60 112" style="stroke-width:2.2"/>
+      <use href="#eyes" transform="translate(58 66) scale(.95) rotate(-12)"/>
+      <path class="n" d="M44 120h32"/>
+    </symbol>
+
+    <symbol id="s-juice" viewBox="0 0 120 130">
+      <path class="n" d="M74 4L64 62"/>
+      <path class="o" d="M26 30h68l-7 76q-1 8 -9 8H42q-8 0 -9 -8z"/>
+      <path class="m" d="M30 52h60l-4 54q-1 8 -9 8H43q-8 0 -9 -8z"/>
+      <path class="n" d="M26 30h68"/>
+      <circle class="m" cx="30" cy="30" r="14"/>
+      <path class="n" style="stroke-width:2" d="M30 18v24M18 30h24M21.5 21.5l17 17M38.5 21.5l-17 17"/>
+      <use href="#eyes" transform="translate(66 80) scale(.9)"/>
+    </symbol>
+  </defs>
+</svg>
+<div class="wrap">
+  <div class="top">
+    <img class="logo" src="assets/logo-navy.png" alt="رؤية">
+    <svg class="hero" viewBox="0 0 200 170" aria-hidden="true"><use href="#s-coffee"/></svg>
+    <h1>منيو <em>مشروبات</em></h1>
+    <p class="welcome">أهلًا بيك.. اختار مشروبك</p>
+  </div>
+
+  <div class="who">
+    <label for="who">اسمك أو مكانك (اختياري)</label>
+    <input id="who" type="text" placeholder="مثال: أحمد - قاعة 2" autocomplete="name" maxlength="60">
+    <p class="hint">اضغط على المشروب وهيفتح واتساب برسالة جاهزة، وبس تضغط إرسال.</p>
+  </div>
+
+  <section class="sec"><h2><svg viewBox="0 0 120 130"><use href="#s-tea"/></svg>الشاي</h2><ul><li><button class="item" data-name="شاي أحمد تي لندن"><span class="nm">شاي أحمد تي لندن</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="شاي أحمد تي كشري"><span class="nm">شاي أحمد تي كشري</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="شاي أحمد تي قرنفل"><span class="nm">شاي أحمد تي قرنفل</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="شاي زنجبيل"><span class="nm">شاي زنجبيل</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="شاي نعناع"><span class="nm">شاي نعناع</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="شاي أخضر"><span class="nm">شاي أخضر</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li></ul></section><section class="sec"><h2><svg viewBox="0 0 200 170"><use href="#s-coffee"/></svg>القهوة</h2><ul><li><button class="item" data-name="نسكافيه"><span class="nm">نسكافيه</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="قهوة تركي روست ماستر"><span class="nm">قهوة تركي روست ماستر</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="قهوة بالبندق"><span class="nm">قهوة بالبندق</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="إسبريسو لافازا إيطالي (سنجل شوت)"><span class="nm">إسبريسو لافازا إيطالي<small>سنجل شوت</small></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="إسبريسو لافازا إيطالي (دبل شوت)"><span class="nm">إسبريسو لافازا إيطالي<small>دبل شوت</small></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="كابتشينو"><span class="nm">كابتشينو</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="لاتيه"><span class="nm">لاتيه</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li></ul></section><section class="sec"><h2><svg viewBox="0 0 120 130"><use href="#s-leaf"/></svg>المشروبات الصحية</h2><ul><li><button class="item" data-name="زنجبيل قرفة"><span class="nm">زنجبيل قرفة</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="زنجبيل ليمون"><span class="nm">زنجبيل ليمون</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="كركديه"><span class="nm">كركديه</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="ينسون"><span class="nm">ينسون</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="نعناع"><span class="nm">نعناع</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="كرفس بقدونس"><span class="nm">كرفس بقدونس</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li></ul></section><section class="sec"><h2><svg viewBox="0 0 120 130"><use href="#s-juice"/></svg>العصائر</h2><ul><li><button class="item" data-name="عصير برتقال"><span class="nm">عصير برتقال</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li><li><button class="item" data-name="عصير مانجو"><span class="nm">عصير مانجو</span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c.3 3 2.6 5.6 6 6.5l1.3-1.4-2.2-1.2-.9.7c-.9-.4-1.8-1.3-2.3-2.3l.7-.9-1.2-2.2z"/></svg></span></button></li></ul></section>
+
+  <div class="foot"><i></i><b>بالهنا والشفا</b></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+// ===== الإعدادات =====
+const CONFIG = {
+  phone: "201004127510",              // رقم الواتساب (صيغة دولية بدون + أو أصفار)
+  greeting: "السلام عليكم، عايز أطلب:"
+};
+// ====================
+const who = document.getElementById('who'), toast = document.getElementById('toast');
+const params = new URLSearchParams(location.search);
+try { who.value = params.get('t') || localStorage.getItem('rooya-who') || ''; } catch (e) { who.value = params.get('t') || ''; }
+who.addEventListener('input', () => { try { localStorage.setItem('rooya-who', who.value); } catch (e) {} });
+
+document.querySelectorAll('.item').forEach(btn => btn.addEventListener('click', () => {
+  const name = btn.dataset.name, place = who.value.trim();
+  let text = CONFIG.greeting + '\n- ' + name;
+  if (place) text += '\n\nالاسم/المكان: ' + place;
+  toast.innerHTML = 'جاري فتح واتساب لطلب <b>' + name + '</b>';
+  toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2500);
+  window.location.href = 'https://wa.me/' + CONFIG.phone + '?text=' + encodeURIComponent(text);
+}));
+</script>
+</body>
+</html>
